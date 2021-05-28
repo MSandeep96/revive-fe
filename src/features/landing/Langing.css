@@ -1,0 +1,8 @@
+.noCursor{
+  caret-color: transparent;
+}
+
+.holder{
+  position: absolute;
+  z-index: 0;
+}
