@@ -33,7 +33,7 @@ export const LoginModal = (): ReactElement => {
   };
 
   const onPhoneChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const val = e.currentTarget.value;
+    const val = e.currentTarget.value.replace(/\D/g, "");
     if (val.length < 11) {
       setPhN(val);
     }
