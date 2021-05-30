@@ -3,6 +3,11 @@ import { APIErrorType, ApiState, IAPIState } from '../../util/apiTypes';
 import { fetchListings } from './listingApi';
 import { FetchListingQueryDto, Listing } from './listingtypes';
 
+// const listingsAdapter = createEntityAdapter<Listing>({
+//   selectId: (listing) => listing._id,
+//   sortComparer: (a, b) => (a.distance > b.distance ? 1 : -1),
+// });
+
 type ListingsInitalState = {
   listings?: Listing[];
   apiState: IAPIState;

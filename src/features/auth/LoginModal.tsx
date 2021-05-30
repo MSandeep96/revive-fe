@@ -61,7 +61,6 @@ export const LoginModal = (): ReactElement => {
             <InputGroup mt={1}>
               <InputLeftAddon>+91</InputLeftAddon>
               <Input
-                type="tel"
                 placeholder="Phone number"
                 value={phN}
                 onChange={onPhoneChange}

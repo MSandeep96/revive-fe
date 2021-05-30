@@ -17,7 +17,7 @@ export const Content = (): ReactElement => {
         borderColor="inherit"
         borderTopColor="transparent"
       >
-        <TabPanel>
+        <TabPanel h="100%">
           <FilterListings />
         </TabPanel>
         <TabPanel display="flex" h="100%" p={0}>

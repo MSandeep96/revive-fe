@@ -51,4 +51,6 @@ export interface FetchListingQueryDto {
   sort: ListingSort;
   distance: number;
   listingTypes: ListingType[];
+  pageNo: number;
+  pageLength: number;
 }
