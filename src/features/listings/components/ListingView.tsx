@@ -5,6 +5,7 @@ import {
   IconButton,
   Image,
   Skeleton,
+  StackDivider,
   Tag,
   TagLabel,
   Text,
@@ -33,29 +34,34 @@ export const ListingView = ({ listing, showContact }: ListingViewProps) => {
       />
       <VStack alignItems="flex-start" w="100%" h="100%" py={2}>
         <HStack justify="space-between" w="100%" pr={4}>
-          <HStack>
-            <Text fontSize="md" isTruncated>
-              {listing.gameName}
-            </Text>
-            <Tag size="sm">
-              <TagLabel>{`${(listing.distance ?? 0 / 1000).toFixed(
-                2
-              )} kms`}</TagLabel>
-            </Tag>
-          </HStack>
-          <PlatformTag platform={listing.platform} />
+          <Text fontSize="md" isTruncated>
+            {listing.gameName}
+          </Text>
+          <IconButton
+            size="xs"
+            variant="ghost"
+            icon={<ChatIcon />}
+            aria-label="Message"
+          />
         </HStack>
         <Divider mt={0} mb={2} />
-        <HStack justify="space-between" w="100%" pr={2}>
-          <VStack alignItems="flex-start" flexGrow={1}>
+        <HStack
+          justify="space-between"
+          h="100%"
+          w="100%"
+          pr={2}
+          divider={<StackDivider borderColor="inherit" />}
+        >
+          <VStack alignItems="flex-start" h="100%" flexGrow={1}>
             <ListingTypeBox listing={listing} />
           </VStack>
-          <VStack h="100%">
-            <IconButton
-              variant="ghost"
-              icon={<ChatIcon />}
-              aria-label="Message"
-            />
+          <VStack justifyContent="flex-start" h="100%">
+            <PlatformTag platform={listing.platform} />
+            <Tag size="sm">
+              <TagLabel>
+                {`${((listing.distance ?? 0) / 1000).toFixed(2)} kms`}
+              </TagLabel>
+            </Tag>
           </VStack>
         </HStack>
       </VStack>

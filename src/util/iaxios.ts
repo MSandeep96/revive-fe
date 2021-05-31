@@ -7,7 +7,7 @@ import {
 } from './tokenStore';
 
 export const iaxios = axios.create({
-  baseURL: 'https://msandeep96-revive-qcw2-3000.githubpreview.dev/'
+  baseURL: 'https://msandeep96-revive-be-57c7-3000.githubpreview.dev/',
 });
 
 // set auth header on each request

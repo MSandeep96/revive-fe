@@ -29,11 +29,13 @@ export const LoginModal = (): ReactElement => {
   const labelText = isSignUp ? 'Up' : 'In';
 
   const onGoogleLogin = () => {
-    window.location.replace('https://msandeep96-revive-qcw2-3000.githubpreview.dev/auth/google');
+    window.location.replace(
+      'https://msandeep96-revive-be-57c7-3000.githubpreview.dev/auth/google'
+    );
   };
 
   const onPhoneChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const val = e.currentTarget.value.replace(/\D/g, "");
+    const val = e.currentTarget.value.replace(/\D/g, '');
     if (val.length < 11) {
       setPhN(val);
     }
