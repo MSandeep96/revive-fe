@@ -13,6 +13,7 @@ export type AppState = {
   hasLocation: boolean;
   location?: number[];
   showLoginModal: boolean;
+  showEmailAuthModal: boolean;
   isSignUp: boolean;
   filter: {
     listingTypes: ListingType[];
@@ -26,6 +27,7 @@ const initialState: AppState = {
   hasNavigator: navigator.geolocation !== undefined,
   hasLocation: false,
   showLoginModal: false,
+  showEmailAuthModal: false,
   isSignUp: true,
   filter: {
     listingTypes: [ListingType.RENT, ListingType.SALE, ListingType.TRADE],
@@ -70,6 +72,13 @@ export const appSlice = createSlice({
     closeLoginModal: (state) => {
       state.showLoginModal = false;
     },
+    showEmailAuthModal: (state, action: PayloadAction<boolean>) => {
+      state.showEmailAuthModal = true;
+      state.isSignUp = action.payload ?? true;
+    },
+    closeEmailAuthModal: (state) => {
+      state.showEmailAuthModal = false;
+    },
     setSortType: (state, action: PayloadAction<ListingSort>) => {
       state.filter.pageNo = 1;
       if(action.payload === ListingSort.CHEAPEST){
@@ -102,6 +111,8 @@ export const {
   setLocation,
   showLoginModal,
   closeLoginModal,
+  showEmailAuthModal,
+  closeEmailAuthModal,
   setSortType,
   setListingsFilter,
   setRadius,
