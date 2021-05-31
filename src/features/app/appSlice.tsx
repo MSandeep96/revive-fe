@@ -41,13 +41,16 @@ export const incPageNo = createAsyncThunk<void, FilterGridProps>(
   async (arg, thunkApi) => {
     const state = thunkApi.getState() as RootState;
     const { pageNo } = state.app.filter;
-    thunkApi.dispatch(
-      actFetchListings({
-        ...state.app.filter,
-        pageNo: pageNo + 1,
-        pageLength: arg.rows * arg.cols,
-      })
-    );
+    const {fetchedTill} = state.listings;
+    if(pageNo + 1 > fetchedTill){
+      thunkApi.dispatch(
+        actFetchListings({
+          ...state.app.filter,
+          pageNo: pageNo + 1,
+          pageLength: arg.rows * arg.cols,
+        })
+      );
+    }
   }
 );
 
@@ -68,12 +71,19 @@ export const appSlice = createSlice({
       state.showLoginModal = false;
     },
     setSortType: (state, action: PayloadAction<ListingSort>) => {
+      state.filter.pageNo = 1;
+      if(action.payload === ListingSort.CHEAPEST){
+        state.filter.listingTypes = [ListingType.RENT, ListingType.SALE];
+      }
       state.filter.sort = action.payload;
     },
-    setRadius: (state, action: PayloadAction<number>) => {
+    setRadius: (state, action: PayloadAction<number>) => {      
+      state.filter.pageNo = 1;
       state.filter.distance = action.payload;
     },
     setListingsFilter: (state, action: PayloadAction<ListingType[]>) => {
+      if(action.payload.length===0) return; 
+      state.filter.pageNo = 1;
       state.filter.listingTypes = action.payload;
     },
     decPageNo: (state) => {

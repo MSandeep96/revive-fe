@@ -22,6 +22,7 @@ export type RentDetails = {
 };
 
 export type Listing = {
+  _id: string;
   createdBy: string;
   slug: string;
   platform: Platform;

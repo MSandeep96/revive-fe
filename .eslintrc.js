@@ -23,6 +23,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
     project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
   parser: '@typescript-eslint/parser',
   overrides: [
@@ -35,6 +36,7 @@ module.exports = {
         ecmaVersion: 2018,
         sourceType: 'module',
         project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
       },
     }
   ],

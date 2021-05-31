@@ -22,7 +22,7 @@ type ListingViewProps = {
 
 export const ListingView = ({ listing, showContact }: ListingViewProps) => {
   return (
-    <HStack h="150px" w="100%" border="2px" rounded="md" boxShadow="xl">
+    <HStack h="150px" w="100%" border="1px" rounded="md" boxShadow="xl">
       <Image
         roundedBottomLeft="md"
         roundedTopLeft="md"

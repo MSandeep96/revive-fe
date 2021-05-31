@@ -29,7 +29,7 @@ export const LoginModal = (): ReactElement => {
   const labelText = isSignUp ? 'Up' : 'In';
 
   const onGoogleLogin = () => {
-    window.location.replace('http://localhost:3000/auth/google');
+    window.location.replace('https://msandeep96-revive-qcw2-3000.githubpreview.dev/auth/google');
   };
 
   const onPhoneChange: ChangeEventHandler<HTMLInputElement> = (e) => {

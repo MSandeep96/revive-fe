@@ -34,7 +34,7 @@ import {
   setSortType,
 } from '../../app/appSlice';
 import { ListingView } from '../components/ListingView';
-import { actFetchListings } from '../listingsSlice';
+import { actFetchListings, selectListings } from '../listingsSlice';
 import { ListingSort, ListingType } from '../listingtypes';
 
 export const sortTypes = [
@@ -71,12 +71,13 @@ export const FilterListings = (): ReactElement => {
   const sortType = useAppSelector((state) => state.app.filter.sort);
   const radius = useAppSelector((state) => state.app.filter.distance);
   const pageNo = useAppSelector((state) => state.app.filter.pageNo);
+  const maxPageCount = useAppSelector((state) => state.listings.pageCount);
   const [gridProps, setGridProps] = useState<FilterGridProps | null>(null);
 
   const isLoading = useAppSelector(
     (state) => state.listings.apiState.status === ApiState.LOADING
   );
-  const listings = useAppSelector((state) => state.listings.listings);
+  const listings = useAppSelector(selectListings);
   const ref = useRef<HTMLDivElement>(null);
 
   const sortTypesAvailable =
@@ -196,6 +197,7 @@ export const FilterListings = (): ReactElement => {
           <IconButton
             icon={<ChevronRightIcon />}
             aria-label="Next page"
+            disabled={maxPageCount === 0 || maxPageCount === pageNo}
             onClick={() => dispatch(incPageNo(gridProps as FilterGridProps))}
           />
         </ButtonGroup>
