@@ -63,52 +63,53 @@ export const LoginModal = (): ReactElement => {
           <Text>{`Sign ${labelText}`}</Text>
         </ModalHeader>
         <ModalCloseButton />
-        {viewEmailAuthModal ?
-          <EmailAuthModal /> :
-          <ModalBody display="flex" flexDir="column" alignItems="center" mb={2}>
-            <FormControl
-              display="flex"
-              flexDir="column"
-              alignItems="center"
-              mt={4}
-            >
-              <FormLabel alignSelf="flex-start">{`Sign ${labelText.toLowerCase()} with your phone number`}</FormLabel>
-              <InputGroup mt={1}>
-                <InputLeftAddon>+91</InputLeftAddon>
-                <Input
-                  placeholder="Phone number"
-                  value={phN}
-                  onChange={onPhoneChange}
-                />
-              </InputGroup>
-              <Button mx="auto" mt={6} mb={2} bg="green.400">
-                Generate OTP
+        { viewEmailAuthModal ?
+            <EmailAuthModal /> :
+            <ModalBody display="flex" flexDir="column" alignItems="center" mb={2}>
+              <FormControl
+                display="flex"
+                flexDir="column"
+                alignItems="center"
+                mt={4}
+              >
+                <FormLabel alignSelf="flex-start">{`Sign ${labelText.toLowerCase()} with your phone number`}</FormLabel>
+                <InputGroup mt={1}>
+                  <InputLeftAddon>+91</InputLeftAddon>
+                  <Input
+                    placeholder="Phone number"
+                    value={phN}
+                    onChange={onPhoneChange}
+                  />
+                </InputGroup>
+                <Button mx="auto" mt={6} mb={2} bg="green.400">
+                  Generate OTP
+                </Button>
+              </FormControl>
+              <Flex alignItems="center" my={2} w="100%">
+                <Divider />
+                <Text mx={2}>or</Text>
+                <Divider />
+              </Flex>
+              <Button
+                my={2}
+                mx="auto"
+                bg="white"
+                color="gray.800"
+                onClick={onEmailLogin}
+              >
+                Continue with Email
               </Button>
-            </FormControl>
-            <Flex alignItems="center" my={2} w="100%">
-              <Divider />
-              <Text mx={2}>or</Text>
-              <Divider />
-            </Flex>
-            <Button
-              my={2}
-              mx="auto"
-              bg="white"
-              color="gray.800"
-              onClick={onEmailLogin}
-            >
-              Continue with Email
+              <Button
+                my={2}
+                mx="auto"
+                bg="white"
+                color="gray.800"
+                onClick={onGoogleLogin}
+              >
+                Continue with Google
             </Button>
-            <Button
-              my={2}
-              mx="auto"
-              bg="white"
-              color="gray.800"
-              onClick={onGoogleLogin}
-            >
-              Continue with Google
-          </Button>
-          </ModalBody>}
+            </ModalBody>
+        }
       </ModalContent>
     </Modal>
   );
